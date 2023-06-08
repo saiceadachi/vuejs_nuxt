@@ -12,10 +12,12 @@
     </div>
     <div id="app">
       <div class="col-5">
-        <input v-model="name" type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-        <div class="block mb-2 text-sm font-medium text-red-700 dark:text-red-500">{{ name }}</div>
-        <button @click="show()" class="m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">show</button> 
-        <button @click="change()" class="m-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">change</button>
+        <label for="name">注文の商品名</label>
+        <input v-model="name" type="text" name="name" class="textbox" />
+        <div class="message" v-if="isInvalidName">{{ name }}は商品名として短すぎます</div>
+        <div class="message" v-if="isBlank">何か入力してください</div>
+        <button @click="order()" class="button-blue">注文</button> 
+        <button @click="change()" class="button-red">変更</button>
       </div>
     </div>
   </div>
@@ -26,14 +28,21 @@
   data: () =>{
   return {
     items: [{ message: 'たこ焼き', price: 400 }, { message: '串かつセット', price: 1200 }, { message: '男はつらいよ', price: 900 }, { message: '梅くらげ', price: 200 }],
-    name: 'this is name'
+    name: 'いつものやつ'
   }
   }, methods: {
-    show: function () {
-      alert(this.name);
+    order: function () {
+      alert(this.name+"をご注文");
     },
     change: function () {
-      this.name = "test!!!";
+      this.name = "いつものやつ";
+    }
+  }, computed: {
+    isInvalidName(){
+      return this.name.length < 4 && this.name.length > 0;
+    },
+    isBlank(){
+      return this.name.length == 0;
     }
   }
 }
