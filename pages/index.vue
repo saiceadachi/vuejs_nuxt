@@ -19,6 +19,46 @@
         <button @click="order()" class="button-blue">注文</button> 
         <button @click="change()" class="button-red">変更</button>
       </div>
+      <div :style="bindStyle">bind style</div>
+      <div>
+        <p>
+          <span>大きさ：</span>
+          <input
+            v-model="size_data2.range"
+            type="range"
+            max="500"
+            min="10"
+          />
+        </p>
+        <p>
+          <span>赤：</span>
+          <input
+            v-model="size_data2.red"
+            type="range"
+            max="255"
+            min="0"
+          />
+        </p>
+        <p>
+          <span>緑：</span>
+          <input
+            v-model="size_data2.green"
+            type="range"
+            max="255"
+            min="0"
+          />
+        </p>
+        <p>
+          <span>青：</span>
+          <input
+            v-model="size_data2.blue"
+            type="range"
+            max="255"
+            min="0"
+          />
+        </p>
+        <div :style="bindStyle2"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +68,9 @@
   data: () =>{
   return {
     items: [{ message: 'たこ焼き', price: 400 }, { message: '串かつセット', price: 1200 }, { message: '男はつらいよ', price: 900 }, { message: '梅くらげ', price: 200 }],
-    name: 'いつものやつ'
+    name: 'いつものやつ',
+    size_data: {width: 300, height: 50, color: '#aa00cc', fontsize: 36},
+    size_data2: {range: 10, red: 0, blue: 0, green: 0}
   }
   }, methods: {
     order: function () {
@@ -43,7 +85,13 @@
     },
     isBlank(){
       return this.name.length == 0;
-    }
+    },
+    bindStyle(){
+      return `width: ${this.size_data.width}px; height: ${this.size_data.height}px; color: ${this.size_data.color}; font-size: ${this.size_data.fontsize}px;`
+    },
+    bindStyle2(){
+      return `width: ${this.size_data2.range}px; height: ${this.size_data2.range}px; background: rgb(${this.size_data2.red}, ${this.size_data2.green}, ${this.size_data2.blue})`
+    },
   }
 }
 </script>
