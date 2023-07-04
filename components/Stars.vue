@@ -26,20 +26,16 @@
 
     const currentValue = ref (props.rating)
 
+    const sequence = [...Array(5)].map((_:undefined, idx:number) => idx+1)
+
     const size = props.size
 </script>
 
 <template>
     <div style="display: inline-flex; flex-direction: row">
-    <img v-if="currentValue>0" :width="size" :height="size" v-on:click="()=>onClick(1)" src="../assets/img/star1.png" />
-    <img v-else :width="size" :height="size" v-on:click="()=>onClick(1)" src="../assets/img/star0.png" />
-    <img v-if="currentValue>1" :width="size" :height="size" v-on:click="()=>onClick(2)" src="../assets/img/star1.png" />
-    <img v-else :width="size" :height="size" v-on:click="()=>onClick(2)" src="../assets/img/star0.png" />
-    <img v-if="currentValue>2" :width="size" :height="size" v-on:click="()=>onClick(3)" src="../assets/img/star1.png" />
-    <img v-else :width="size" :height="size" v-on:click="()=>onClick(3)" src="../assets/img/star0.png" />
-    <img v-if="currentValue>3" :width="size" :height="size" v-on:click="()=>onClick(4)" src="../assets/img/star1.png" />
-    <img v-else :width="size" :height="size" v-on:click="()=>onClick(4)" src="../assets/img/star0.png" />
-    <img v-if="currentValue>4" :width="size" :height="size" v-on:click="()=>onClick(5)" src="../assets/img/star1.png" />
-    <img v-else :width="size" :height="size" v-on:click="()=>onClick(5)" src="../assets/img/star0.png" />
+    <template v-for="index in sequence">
+        <img v-if="currentValue>=index" :width="size" :height="size" v-on:click="()=>onClick(index)" src="../assets/img/star1.png" />
+        <img v-else :width="size" :height="size" v-on:click="()=>onClick(index)" src="../assets/img/star0.png" />
+    </template>
     </div>
 </template>
