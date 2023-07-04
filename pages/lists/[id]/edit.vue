@@ -9,6 +9,14 @@ if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 const submitForm = async () => {
+    if(article.value.title===''){
+        alert('タイトルを入力してください');
+        return;
+    }
+    if(article.value.body===''){
+        alert('本文を入力してください');
+        return;
+    }
     await useFetch('/api/review', {
         method: 'put',
         body: { 
