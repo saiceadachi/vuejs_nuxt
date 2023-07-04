@@ -23,7 +23,7 @@
                         {{ review.title }}
                     </nuxt-link>
                 </td>
-                <td class="p-1"><Stars :rating="review.rating.valueOf()" :size="16" :imutal="true" /></td>
+                <td class="p-1"><Stars :rating="review.rating.valueOf()" :size="16" :immutable="true" /></td>
                 <td class="p-1"><div><nuxt-link class="button-red" :to="`/lists/${review.id}/delete`">削除</nuxt-link></div></td>
             </tr>
         </tbody>

@@ -13,7 +13,7 @@ if (!article.value) {
     <div class="flex flex-col">
         <h1 class="title text-2xl font-bold">{{ article?.title }}</h1>
         <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
-            Rating: <Stars :rating="article?.rating.valueOf()" :imutal="true"></Stars>
+            Rating: <Stars :rating="article?.rating.valueOf()" :immutable="true"></Stars>
         </div>
         <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
             Content: <br />{{ article?.body }}</div>

@@ -5,20 +5,20 @@
     interface Props {
     rating: number,
     size?: number,
-    imutal?: boolean
+    immutable?: boolean
     }
     interface Emits {
         (e: "update:rating", visible: number): void;
     }
 
     const props = withDefaults(
-    defineProps<Props>(), { rating: 0, size: 32, imutal: false }
+    defineProps<Props>(), { rating: 0, size: 32, immutable: false }
     );
 
     const emit = defineEmits<Emits>();
 
     const onClick = (r: number) => { 
-        if(props.imutal) return
+        if(props.immutable) return
         console.log(r);
         currentValue.value=r
          emit('update:rating', r) 

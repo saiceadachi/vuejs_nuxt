@@ -35,7 +35,7 @@ const submitForm = async () => {
                 Title: <input class="bg-gray-50 border" type="text" disabled name="title" v-model="article.title">
             </div>
             <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
-                Rating: <Stars :rating="article?.rating.valueOf()" :imutal="true" />
+                Rating: <Stars :rating="article?.rating.valueOf()" :immutable="true" />
             </div>
             <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
                 Content: <textarea cols=80 rows=20 class="bg-gray-50 border" disabled name="body" v-model="article.body"></textarea>
