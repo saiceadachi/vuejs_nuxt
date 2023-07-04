@@ -18,12 +18,12 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    response
+    await response
         .then(function(res){
-            console.log(res.id)
+            setResponseStatus(event, 200)
         })
         .catch(function(err){
-            console.log (err)
+            setResponseStatus(event, 400)
         })
-    return sendRedirect(event, "/lists/")
+    return {processed:true}
 })

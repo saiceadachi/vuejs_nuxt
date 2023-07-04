@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const id = String(route.params.id);
-const { data: article } = await useFetch(`/api/reviewDetail`, {
+const { data: article } = await useFetch(`/api/review`, {
     params: { id: id },
 });
 if (!article.value) {
