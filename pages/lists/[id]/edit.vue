@@ -13,9 +13,9 @@ const submitForm = async () => {
         method: 'put',
         body: { 
             id: id,
-            title: article.value.title,
-            body: article.value.body,
-            rating: article.value.rating
+            title: article?.value?.title,
+            body: article?.value?.body,
+            rating: article?.value?.rating
         },
         onResponse({request, response, options}) {
             if (response.status === 200) {
@@ -30,19 +30,25 @@ const submitForm = async () => {
     })
     await navigateTo('/lists/')
 }
+const updateRating = async(r :number) => {
+    if(article && article.value){
+        article.value.rating = r;
+    }
+}
 </script>
 
 <template>
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
-            <div>
-                <input class="bg-gray-50 border" type="text" name="title" v-model="article.title">
+            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+                Title: <input class="bg-gray-50 border" type="text" name="title" v-model="article.title">
             </div>
-            <div>
-                <input class="bg-gray-50 border" type="text" name="rating" v-model="article.rating">
+            <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+                Rating: <input class="bg-gray-50 border" type="hidden" name="rating" v-model="article.rating">
+                <Stars :rating="article?.rating.valueOf()" @update:rating="updateRating($event)" />
             </div>
-            <div>
-                <textarea cols=20 rows=10 class="bg-gray-50 border" name="body" v-model="article.body"></textarea>
+            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+                Content: <textarea cols=80 rows=20 class="bg-gray-50 border" name="body" v-model="article.body"></textarea>
             </div>
             <input class="button-blue" type="submit" value="更新">
         </form>

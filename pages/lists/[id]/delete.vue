@@ -31,16 +31,16 @@ const submitForm = async () => {
     <h4>下記のレビューを削除します</h4>
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
-            <div>
-                <input class="bg-gray-50 border" type="text" disabled name="title" v-model="article.title">
+            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+                Title: <input class="bg-gray-50 border" type="text" disabled name="title" v-model="article.title">
             </div>
-            <div>
-                <input class="bg-gray-50 border" type="text" disabled name="rating" v-model="article.rating">
+            <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+                Rating: <Stars :rating="article?.rating.valueOf()" :imutal="true" />
             </div>
-            <div>
-                <textarea cols=20 rows=10 class="bg-gray-50 border" disabled name="body" v-model="article.body"></textarea>
+            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+                Content: <textarea cols=80 rows=20 class="bg-gray-50 border" disabled name="body" v-model="article.body"></textarea>
             </div>
-            <input class="button-blue" type="submit" value="削除">
+            <input class="button-red" type="submit" value="削除">
         </form>
     </div>
     </div>

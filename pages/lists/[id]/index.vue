@@ -11,9 +11,12 @@ if (!article.value) {
 
 <template>
     <div class="flex flex-col">
-        <h1 class="title text-2xl font-bold">{{ article.title }}</h1>
-        <div class="p-3 md">Rating: {{ article.rating }}</div>
-        <div class="p-3 md">{{ article.body }}</div>
+        <h1 class="title text-2xl font-bold">{{ article?.title }}</h1>
+        <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+            Rating: <Stars :rating="article?.rating.valueOf()" :imutal="true"></Stars>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+            Content: <br />{{ article?.body }}</div>
         <nuxt-link class="button-blue" :to="`${id}/edit`">更新</nuxt-link>
     </div>
 </template>

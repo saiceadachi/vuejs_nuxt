@@ -12,6 +12,6 @@
             ">当店のレビュー一覧</h1>
         </div>
         <nuxt-link class="button-blue" to="/lists/new">新規レビュー</nuxt-link>
-        <ReviewList :reviews="reviews.contents" />
+        <ReviewList :reviews="reviews?.contents" />
     </div>
 </template>

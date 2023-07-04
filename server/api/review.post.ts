@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
         content:{
             title: String(title),
             body: String(body),
-            rating: Number(rating)
+            rating: Number(rating).valueOf()
         }
     })
 

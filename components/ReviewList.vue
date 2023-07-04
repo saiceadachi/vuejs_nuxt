@@ -2,7 +2,7 @@
     import { Review } from '../typescript/review'
     const header = ref(["番号", "タイトル", "Rating",""])
     type Props = {
-        reviews: Review[];
+        reviews: Review[] | undefined;
     }
     const { reviews } = defineProps<Props>()
 </script>
@@ -23,7 +23,7 @@
                         {{ review.title }}
                     </nuxt-link>
                 </td>
-                <td class="p-1">{{ review.rating }}</td>
+                <td class="p-1"><Stars :rating="review.rating.valueOf()" :size="16" :imutal="true" /></td>
                 <td class="p-1"><div><nuxt-link class="button-red" :to="`/lists/${review.id}/delete`">削除</nuxt-link></div></td>
             </tr>
         </tbody>

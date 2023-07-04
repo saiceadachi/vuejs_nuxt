@@ -70,7 +70,8 @@
     items: [{ message: 'たこ焼き', price: 400 }, { message: '串かつセット', price: 1200 }, { message: '男はつらいよ', price: 900 }, { message: '梅くらげ', price: 200 }],
     name: 'いつものやつ',
     size_data: {width: 300, height: 50, color: '#aa00cc', fontsize: 36},
-    size_data2: {range: 10, red: 0, blue: 0, green: 0}
+    size_data2: {range: 10, red: 0, blue: 0, green: 0},
+    rating: 1
   }
   }, methods: {
     order: function () {
