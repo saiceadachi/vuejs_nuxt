@@ -4,7 +4,7 @@ const id = String(route.params.id);
 const { data: article } = await useFetch(`/api/review`, {
     params: { id: id },
 });
-console.log ("value from api:"+JSON.stringify(article.value))
+
 if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
@@ -31,13 +31,13 @@ const submitForm = async () => {
     <h4>下記のレビューを削除します</h4>
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Title: <input class="bg-gray-50 border" type="text" disabled name="title" v-model="article.title">
             </div>
-            <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+            <div class="flex-centeraligned">
                 Rating: <Stars :rating="article?.rating.valueOf()" :immutable="true" />
             </div>
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Content: <textarea cols=80 rows=20 class="bg-gray-50 border" disabled name="body" v-model="article.body"></textarea>
             </div>
             <input class="button-red" type="submit" value="削除">

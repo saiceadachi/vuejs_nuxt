@@ -4,7 +4,7 @@ const id = String(route.params.id);
 const { data: article } = await useFetch(`/api/review`, {
     params: { id: id },
 });
-console.log ("value from api:"+article.value)
+
 if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
@@ -48,14 +48,14 @@ const updateRating = async(r :number) => {
 <template>
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Title: <input class="bg-gray-50 border" type="text" name="title" v-model="article.title">
             </div>
-            <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+            <div class="flex-centeraligned">
                 Rating: <input class="bg-gray-50 border" type="hidden" name="rating" v-model="article.rating">
                 <Stars :rating="article?.rating.valueOf()" @update:rating="updateRating($event)" />
             </div>
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Content: <textarea cols=80 rows=20 class="bg-gray-50 border" name="body" v-model="article.body"></textarea>
             </div>
             <input class="button-blue" type="submit" value="更新">

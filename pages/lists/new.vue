@@ -40,14 +40,14 @@ const submitForm = async () => {
 <template>
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Title: <input class="bg-gray-50 border" type="text" name="title" v-model="title">
             </div>
-            <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+            <div class="flex-centeraligned">
                 Rating: <input class="bg-gray-50 border" type="hidden" name="rating" v-model="rating">
                 <Stars :rating="rating" @update:rating="rating = $event" />
             </div>
-            <div style="display: flex; flex-direction: row; align-items: start; column-gap: 0.5rem;">
+            <div class="flex-topaligned">
                 Content:
                 <textarea cols=80 rows=20 class="bg-gray-50 border" name="body" v-model="content"></textarea>
             </div>

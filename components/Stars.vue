@@ -32,7 +32,7 @@
 </script>
 
 <template>
-    <div style="display: inline-flex; flex-direction: row">
+    <div class="stars">
     <template v-for="index in sequence">
         <img v-if="currentValue>=index" :width="size" :height="size" v-on:click="()=>onClick(index)" src="../assets/img/star1.png" />
         <img v-else :width="size" :height="size" v-on:click="()=>onClick(index)" src="../assets/img/star0.png" />

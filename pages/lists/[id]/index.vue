@@ -12,10 +12,10 @@ if (!article.value) {
 <template>
     <div class="flex flex-col">
         <h1 class="title text-2xl font-bold">{{ article?.title }}</h1>
-        <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+        <div class="flex-centeraligned">
             Rating: <Stars :rating="article?.rating.valueOf()" :immutable="true"></Stars>
         </div>
-        <div style="display: flex; flex-direction: row; align-items: center; column-gap: 0.5rem;">
+        <div class="flex-topaligned">
             Content: <br />{{ article?.body }}</div>
         <nuxt-link class="button-blue" :to="`${id}/edit`">更新</nuxt-link>
     </div>

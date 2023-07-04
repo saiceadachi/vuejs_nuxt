@@ -21,3 +21,21 @@
 .tr-5{
     line-height:3;
 }
+
+.stars{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.flex-topaligned{
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+    column-gap: 0.5rem;
+}
+.flex-centeraligned{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    column-gap: 0.5rem;
+}
