@@ -3,27 +3,25 @@ import { Review } from '../../typescript/review'
 
 export default defineEventHandler(async (event) => {
     const params = await readBody(event)
-    const id = params.id
     const title = params.title
     const body = params.body
     const rating = params.rating
 
-    const response = client.update<Review>({
+    const response = client.create<Review>({
         endpoint: 'reviews',
-        contentId: String(id),
         content:{
             title: String(title),
             body: String(body),
-            rating: Number(rating)
+            rating: Number(rating).valueOf()
         }
     })
 
-    response
+    await response
         .then(function(res){
-            console.log(res.id)
+            setResponseStatus(event, 200)
         })
         .catch(function(err){
-            console.log (err)
+            setResponseStatus(event, 400)
         })
-    return sendRedirect(event, "/lists/")
+    return {processed:true}
 })
